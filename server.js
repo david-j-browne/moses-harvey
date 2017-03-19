@@ -5,6 +5,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var fs = require('fs'); 
+var url = require('url'); 
 var app = express();
 
 // we've started you off with Express, 
@@ -36,16 +37,22 @@ app.post("/dreams", function (request, response) {
 app.post("/letters", function(request, response) {  
   
   // This depends on body-parser
-  var year = request.body.year; 
+  // var year = request.body.year; 
+  
+  
+  var query = url.parse(request.url, true).query; 
+  var year = query.year; 
   console.log("Requested year="+year); 
+  // console.log("year inside query object is " + query.year); 
   
   var filename = __dirname + '/views/letters/' + year + ".html"; 
   console.log("Letter filenme="+filename); 
   var text = fs.readFileSync(filename, 'utf8'); 
   console.log(text); 
   
+  response.writeHead(200); 
   response.write(text); 
-  response.send(200);
+  response.end(); 
 });
 
 // Simple in-memory store for now
