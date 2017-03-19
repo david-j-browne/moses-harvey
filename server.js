@@ -48,7 +48,6 @@ app.post("/letters", function(request, response) {
   var filename = __dirname + '/views/letters/' + year + ".html"; 
   console.log("Letter filenme="+filename); 
   var text = fs.readFileSync(filename, 'utf8'); 
-  console.log(text); 
   
   response.writeHead(200); 
   response.write(text); 

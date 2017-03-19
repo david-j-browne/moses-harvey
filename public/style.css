@@ -4,7 +4,7 @@
 /* You might want to try something fancier: */
 /* less: http://lesscss.org/ */
 
-* {
+/* * {
   box-sizing: border-box;
 }
 
@@ -79,4 +79,16 @@ footer > a {
 
 .nicejob {
   text-decoration: line-through;
+} */
+
+body {
+  background: #f5eacb;
+}
+
+#div-letters {
+  height:600px;
+  width: 760px;
+  background-color: yellow;
+  overflow:auto; 
+  margin:0 auto;
 }

@@ -69,6 +69,10 @@
     </form>
 
     
+    <div id="div-letters" style="">
+      
+    </div>
+    
     
     <!-- Your web-app is https, so your scripts need to be too -->
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"
@@ -78,7 +82,7 @@
   
 
       
-    
+
 
     
 <script>
@@ -95,7 +99,8 @@ function myFunction() {
 }
   
   function displayEmbedded(html) {
-    alert(html); 
+   
+    document.getElementById("div-letters").innerHTML = html; 
   }
 </script>
 
