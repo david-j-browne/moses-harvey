@@ -93,7 +93,7 @@ format </a>and can be read and searched using the features of Adobe Acrobat read
       </p>
 
       <form>
-        <select name="year" id="yearSelect" onchange="myFunction()">
+        <select name="year" id="yearSelect" onchange="requestLettersForYear()">
           <option value="1877">1877</option>
           <option value="1878">1878</option>
         </select>
@@ -126,7 +126,7 @@ format </a>and can be read and searched using the features of Adobe Acrobat read
   
   
   <script>
-    function myFunction() {
+    function requestLettersForYear() {
 
       var year = document.getElementById("yearSelect").value;
       var request = new XMLHttpRequest();

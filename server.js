@@ -20,30 +20,14 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.get("/letter1.doc", function (request, response) {
-        response.sendFile(__dirname + '/views/my-cool-page.html'); 
-        });
-
-app.get("/dreams", function (request, response) {
-  response.send(dreams);
-});
-
-// could also use the POST body instead of query string: http://expressjs.com/en/api.html#req.body
-app.post("/dreams", function (request, response) {
-  dreams.push(request.query.dream);
-  response.sendStatus(200);
-});
-
 app.post("/letters", function(request, response) {  
   
   // This depends on body-parser
   // var year = request.body.year; 
-  
-  
+    
   var query = url.parse(request.url, true).query; 
   var year = query.year; 
   console.log("Requested year="+year); 
-  // console.log("year inside query object is " + query.year); 
   
   var filename = __dirname + '/views/letters/' + year + ".html"; 
   console.log("Letter filenme="+filename); 
@@ -54,12 +38,22 @@ app.post("/letters", function(request, response) {
   response.end(); 
 });
 
-// Simple in-memory store for now
-var dreams = [
-  "Find and count some sheep",
-  "Climb a really tall mountain",
-  "Wash the dishes"
-];
+// app.get("/dreams", function (request, response) {
+//   response.send(dreams);
+// });
+
+// // could also use the POST body instead of query string: http://expressjs.com/en/api.html#req.body
+// app.post("/dreams", function (request, response) {
+//   dreams.push(request.query.dream);
+//   response.sendStatus(200);
+// });
+
+// // Simple in-memory store for now
+// var dreams = [
+//   "Find and count some sheep",
+//   "Climb a really tall mountain",
+//   "Wash the dishes"
+// ];
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
