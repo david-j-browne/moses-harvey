@@ -29,9 +29,18 @@ app.post("/letters", function(request, response) {
   var year = query.year; 
   console.log("Requested year="+year); 
   
-  var filename = __dirname + '/views/letters/' + year + ".html"; 
-  console.log("Letter filenme="+filename); 
-  var text = fs.readFileSync(filename, 'utf8'); 
+  var dir = "views/letters/" + year; 
+  var filesInDir = fs.readdirSync(dir); 
+  var text = ""; 
+  for (var i = 0; i < filesInDir.length; i++) {
+    var letterfilename = filesInDir[i]; 
+    console.log("Letter file: " + letterfilename); 
+    text = text + fs.readFileSync(dir + "/" + letterfilename, 'utf8'); 
+  } 
+  
+  // var filename = __dirname + '/views/letters/' + year + ".html"; 
+  // console.log("Letter filenme="+filename); 
+  // var text = fs.readFileSync(filename, 'utf8'); 
   
   response.writeHead(200); 
   response.write(text); 

@@ -98,6 +98,10 @@ format </a>and can be read and searched using the features of Adobe Acrobat read
           <option value="1878">1878</option>
         </select>
       </form>
+      
+      <input id="textbox-search" type="text"/>
+      <input type="button" value="Find" onclick="searchForTextInBox()"/>
+      <input type="button" value="Clear" onclick="clearHighlighting()"/>
 
 <!--       <div>
         <script>
@@ -124,7 +128,7 @@ format </a>and can be read and searched using the features of Adobe Acrobat read
 
   </div>
   
-  
+  <script src="/hilitor.js"> </script>
   <script>
     function requestLettersForYear() {
 
@@ -140,7 +144,20 @@ format </a>and can be read and searched using the features of Adobe Acrobat read
 
     function displayEmbedded(html) {
 
-      document.getElementById("div-letters").innerHTML = html;
+      document.getElementById("div-introduction").innerHTML = html;
+    }
+    
+    var myHilitor = new Hilitor("div-introduction"); 
+    
+    function searchForTextInBox() {
+      // myHilitor.remove(); 
+      var keywords = document.getElementById("textbox-search").value;              
+      window.find(keywords); 
+      // myHilitor.apply(keywords);
+    }
+    
+    function clearHighlighting() {
+      myHilitor.remove();
     }
 
   </script>
